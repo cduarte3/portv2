@@ -3,13 +3,14 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import './index.css';
 
-function App() {
+function Resume() {
   return (
-    <div className="App">
+    <div className="Resume">
       <Navbar />
       <Hero />
+      <h1>Hello</h1>
     </div>
   );
 }
 
-export default App;
+export default Resume;
