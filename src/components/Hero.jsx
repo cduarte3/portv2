@@ -17,9 +17,7 @@ export default function Hero() {
           className="md:text-5xl sm:text-4xl text-xl font-bold"
           strings={[
             "Software Developer",
-            "Co-Op Student",
-            "Full Stack Developer",
-            "Web Developer",
+            "Co-Op Student"
           ]}
           typeSpeed={60}
           backSpeed={70}

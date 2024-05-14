@@ -5,3 +5,7 @@
 body {
   background-color: rgb(25, 30, 68);
 }
+
+#dark-blue-div {
+  z-index: 1000; /* Set a higher z-index */
+}
