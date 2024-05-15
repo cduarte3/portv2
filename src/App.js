@@ -4,6 +4,7 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
 import Frame from './components/Frame';
+import Footer from './components/Footer';
 
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
       <Hero />
       <About />
       <Frame />
+      <Footer />
     </div>
   );
 }
