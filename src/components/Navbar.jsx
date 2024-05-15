@@ -47,7 +47,6 @@ export default function Navbar() {
             : "fixed left-[-100%] top-0 w-[50%] h-full border-r border-r-gray-900 bg-blue-800"
         }
       >
-        <h1 className="w-full text-3xl font-bold text-white"><Link to="/">CD</Link></h1>
         <ul className="pt-4 uppercase text-2xl">
         <li className="p-4 font-bold"><Link to="/">Home</Link></li>
         <li className="p-4 font-bold"><Link to="/resume">Resume</Link></li>

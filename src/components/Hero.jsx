@@ -40,7 +40,7 @@ export default function Hero() {
         </div>
         <div className="flex flex-col items-center justify-center transform hover:scale-125 transition">
         <a
-            href="www.linkedin.com/in/christian-duarte-97593329b"
+            href="https://www.linkedin.com/in/christian-duarte-97593329b"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -58,7 +58,7 @@ export default function Hero() {
         </div>
         <div className="flex flex-col items-center justify-center transform hover:scale-125 transition">
         <a
-            href="https://github.com"
+            href="https://www.instagram.com/christian.duarte7?igsh=Y3Q2N3c4dnh1cHJi&utm_source=qr"
             target="_blank"
             rel="noopener noreferrer"
           >
