@@ -1,14 +1,13 @@
 import React from 'react';
 import Navbar from './components/Navbar';
-import Hero from './components/Hero';
+import ResHero from './components/ResHero';
 import './index.css';
 
 function Resume() {
   return (
     <div className="Resume">
       <Navbar />
-      <Hero />
-      <h1>Hello</h1>
+      <ResHero />
     </div>
   );
 }
