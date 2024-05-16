@@ -2,7 +2,7 @@ import React from "react";
 
 export default function ResHero() {
   return (
-    <div className="grid max-w-screen-xl md:h-full h:full sm:grid-cols-1 lg:grid-cols-2 gap-8 pt-[100px] mx-auto sm:p-8 text-white justify-center text-center">
+    <div className="grid max-w-screen-xl md:h-full sm:grid-cols-1 lg:grid-cols-2 gap-8 pt-[100px] mx-auto sm:p-8 text-white justify-center text-center">
       <div class="text-center flex flex-col justify-center">
         <img
           src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Seneca-logo.svg/800px-Seneca-logo.svg.png"
