@@ -3,17 +3,17 @@ import { Link } from "react-router-dom";
 
 export default function Projects() {
   return (
-    <div>
+    <div className="min-h-screen">
       <h1 className="justify-center text-center mx:auto md:text-7xl sm:text-6xl text-4xl font-bold md:py-6 pt-[30px] text-white">Current Projects</h1>
-      <div className="grid max-w-[90%] h-full sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-[50px] pt-[50px] pb-[50px] mx-auto text-white justify-center text-center">
-        <div className="bg-white border-4 border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-white h-full lg:pt-[30px]">
+      <div className="flex-grow grid max-w-[90%] sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[50px] pt-[50px] pb-[50px] mx-auto text-white justify-center text-center">
+        <div className="bg-white border-4 border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-white h-full p-[30px]">
           <img
             className="mx-auto rounded-lg lg:w-[60%]"
             src="https://pbs.twimg.com/profile_images/1641476962362302464/K8lb6OtN_400x400.jpg"
             alt="AWS Logo"
           />
-          <div className="p-5">
-            <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+          <div>
+            <h5 className="pt-3 mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
               AWS Microservice
             </h5>
             <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
@@ -45,14 +45,14 @@ export default function Projects() {
             </Link>
           </div>
         </div>
-        <div className="bg-white border-4 border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-white h-full lg:pt-[30px]">
+        <div className="bg-white border-4 border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-white h-full p-[30px]">
           <img
             className="mx-auto rounded-lg lg:w-[60%]"
             src="https://media.istockphoto.com/id/1420518918/vector/blackjack-icon-flat-style-vector-illustration-isolated-on-white-background.jpg?s=612x612&w=0&k=20&c=a3WpuAt-cEzO1rNAPasLfi6FgwTTepKNm10194yOEUg="
             alt="Blackjack Cards"
           />
-          <div className="p-5">
-            <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+          <div>
+            <h5 className="pt-3 mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
               BlackJack Pygame
             </h5>
             <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
@@ -81,14 +81,14 @@ export default function Projects() {
             </Link>
           </div>
         </div>
-        <div className="bg-white border-4 border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-white h-full lg:pt-[30px]">
+        <div className="bg-white border-4 border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-white h-full p-[30px]">
           <img
             className="mx-auto rounded-lg lg:w-[60%]"
             src="https://i.pinimg.com/originals/06/c4/f7/06c4f70ec5931e2342e703e8a3f0a253.png"
             alt="Weather App Icon"
           />
-          <div className="p-5">
-            <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+          <div>
+            <h5 className="pt-3 mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
               Weather App
             </h5>
             <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
@@ -117,14 +117,14 @@ export default function Projects() {
             </Link>
           </div>
         </div>
-        <div className="bg-white border-4 border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-white h-full lg:pt-[30px]">
+        <div className="bg-white border-4 border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-white h-full p-[30px]">
           <img
             className="mx-auto rounded-lg lg:w-[60%]"
             src="https://media.istockphoto.com/id/1420518918/vector/blackjack-icon-flat-style-vector-illustration-isolated-on-white-background.jpg?s=612x612&w=0&k=20&c=a3WpuAt-cEzO1rNAPasLfi6FgwTTepKNm10194yOEUg="
             alt="Blackjack Cards"
           />
-          <div className="p-5">
-            <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+          <div>
+            <h5 className="pt-3 mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
               BlackJack Pygame
             </h5>
             <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
