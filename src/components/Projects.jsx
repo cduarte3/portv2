@@ -6,17 +6,17 @@ export default function Projects() {
     <div className="min-h-screen">
       <h1 className="justify-center text-center mx:auto md:text-7xl sm:text-6xl text-4xl font-bold md:py-6 pt-[30px] text-white">Current Projects</h1>
       <div className="flex-grow grid max-w-[90%] sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[50px] pt-[50px] pb-[50px] mx-auto text-white justify-center text-center">
-        <div className="bg-white border-4 border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-white h-full p-[30px]">
+        <div className="border-4 rounded-lg shadow bg-gray-800 border-white h-full p-[30px]">
           <img
             className="mx-auto rounded-lg lg:w-[60%]"
             src="https://pbs.twimg.com/profile_images/1641476962362302464/K8lb6OtN_400x400.jpg"
             alt="AWS Logo"
           />
           <div>
-            <h5 className="pt-3 mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+            <h5 className="pt-3 mb-2 text-2xl font-bold tracking-tight text-white">
               AWS Microservice
             </h5>
-            <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
+            <p className="mb-3 font-normal text-gray-400">
               Uses Parcel, Docker, and AWS (EC2, ECS, ECR, CLI, S3 bucket,
               dynamoDB, cloudWatch). Also includes hurl testing and jest testing
             </p>
@@ -24,7 +24,7 @@ export default function Projects() {
               to="https://www.youtube.com/watch?v=D5WmuvlWnvE"
               target="_blank"
             >
-              <div className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+              <div className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-600 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300">
                 View Live Demo
                 <svg
                   className="rtl:rotate-180 w-3.5 h-3.5 ms-2"
@@ -45,22 +45,22 @@ export default function Projects() {
             </Link>
           </div>
         </div>
-        <div className="bg-white border-4 border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-white h-full p-[30px]">
+        <div className="border-4 rounded-lg shadow bg-gray-800 border-white h-full p-[30px]">
           <img
             className="mx-auto rounded-lg lg:w-[60%]"
             src="https://media.istockphoto.com/id/1420518918/vector/blackjack-icon-flat-style-vector-illustration-isolated-on-white-background.jpg?s=612x612&w=0&k=20&c=a3WpuAt-cEzO1rNAPasLfi6FgwTTepKNm10194yOEUg="
             alt="Blackjack Cards"
           />
           <div>
-            <h5 className="pt-3 mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+            <h5 className="pt-3 mb-2 text-2xl font-bold tracking-tight text-white">
               BlackJack Pygame
             </h5>
-            <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
+            <p className="mb-3 font-normal text-gray-400">
               Quick BlackJack game I made using PyGame Game can be downloaded as
-              a folder / .zip file and ran through main.exe
+              a folder / .zip file and ran through main.exe file
             </p>
             <Link to="https://github.com/cduarte3/blackjack" target="_blank">
-              <div className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+              <div className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-600 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300">
                 Play Blackjack
                 <svg
                   className="rtl:rotate-180 w-3.5 h-3.5 ms-2"
@@ -81,22 +81,22 @@ export default function Projects() {
             </Link>
           </div>
         </div>
-        <div className="bg-white border-4 border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-white h-full p-[30px]">
+        <div className="border-4 rounded-lg shadow bg-gray-800 border-white h-full p-[30px]">
           <img
             className="mx-auto rounded-lg lg:w-[60%]"
             src="https://i.pinimg.com/originals/06/c4/f7/06c4f70ec5931e2342e703e8a3f0a253.png"
             alt="Weather App Icon"
           />
           <div>
-            <h5 className="pt-3 mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+            <h5 className="pt-3 mb-2 text-2xl font-bold tracking-tight text-white">
               Weather App
             </h5>
-            <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
+            <p className="mb-3 font-normal text-gray-400">
               Utilizes OpenWeather API and geocode.maps.co lat/long API and is
               simple a way to showcase some of my skills with API Data.
             </p>
             <Link to="https://weather-app-gamma-cyan-66.vercel.app/" target="_blank">
-              <div className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+              <div className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-600 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300">
                 Check the Weather
                 <svg
                   className="rtl:rotate-180 w-3.5 h-3.5 ms-2"
@@ -117,22 +117,22 @@ export default function Projects() {
             </Link>
           </div>
         </div>
-        <div className="bg-white border-4 border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-white h-full p-[30px]">
+        <div className="border-4 rounded-lg shadow bg-gray-800 border-white h-full p-[30px]">
           <img
             className="mx-auto rounded-lg lg:w-[60%]"
             src="https://media.istockphoto.com/id/1420518918/vector/blackjack-icon-flat-style-vector-illustration-isolated-on-white-background.jpg?s=612x612&w=0&k=20&c=a3WpuAt-cEzO1rNAPasLfi6FgwTTepKNm10194yOEUg="
             alt="Blackjack Cards"
           />
           <div>
-            <h5 className="pt-3 mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+            <h5 className="pt-3 mb-2 text-2xl font-bold tracking-tight text-white">
               BlackJack Pygame
             </h5>
-            <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
+            <p className="mb-3 font-normal text-gray-400">
               Quick BlackJack game I made using PyGame Game can be downloaded as
               a folder / .zip file and ran through main.exe
             </p>
             <Link to="https://github.com/cduarte3/blackjack" target="_blank">
-              <div className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+              <div className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-600 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300">
                 Play Blackjack
                 <svg
                   className="rtl:rotate-180 w-3.5 h-3.5 ms-2"
