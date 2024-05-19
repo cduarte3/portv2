@@ -12,7 +12,7 @@ export default function Feedback() {
       .then((data) => setData(data));
   }, []);
 
-  const [reviewMessage, setReviewMessage] = useState("No reviews Yet");
+  const [reviewMessage, setReviewMessage] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -43,7 +43,7 @@ export default function Feedback() {
   };
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col min-h-screen">
       <form
         onSubmit={handleSubmit}
         className="p-[40px] mx-auto flex-grow h-full text-center justify-center max-w-full"
@@ -81,6 +81,11 @@ export default function Feedback() {
           Submit
         </button>
       </form>
+      <div className="col-span-full flex items-center justify-center">
+            <p className="p-5 mt-[-30px] text-center block mb-2 text-xl sm:text-2xl font-medium text-white">
+              {reviewMessage}
+            </p>
+      </div>
       <div className="flex-grow grid w-[90%] grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[50px] mx-auto text-white justify-center pb-10">
         {data.length > 0 ? (
           data.map((item) => (
@@ -88,8 +93,8 @@ export default function Feedback() {
               key={item.id}
               className="w-[90%] sm:w-[70%]  md:w-full p-4 border-4 rounded-lg shadow bg-gray-800 border-white mx-auto"
             >
-              <p className="pb-4">{item.review}</p>
-              <p className="font-bold pb-4">- {item.name}</p>
+              <p className="font-bold pb-4" style={{ wordWrap: 'break-word' }}>{item.review}</p>
+              <p className="pb-4">- {item.name}</p>
               <p className="pb-4">
                 {new Date(item.date).toISOString().split("T")[0]}
               </p>
@@ -98,8 +103,8 @@ export default function Feedback() {
           ))
         ) : (
           <div className="col-span-full flex items-center justify-center">
-            <p className="p-5 text-center block mb-2 text-xl sm:text-2xl font-medium text-white">
-              {reviewMessage}
+            <p className="p-5 mt-[-30px] text-center block mb-2 text-xl sm:text-2xl font-medium text-white">
+              No reviews Yet
             </p>
           </div>
         )}
