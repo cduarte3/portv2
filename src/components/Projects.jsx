@@ -18,7 +18,7 @@ export default function Projects() {
             </h5>
             <p className="mb-3 font-normal text-gray-400">
               Uses Parcel, Docker, and AWS (EC2, ECS, ECR, CLI, S3 bucket,
-              dynamoDB, cloudWatch). Also includes hurl testing and jest testing
+              dynamoDB, cloudWatch). Also includes hurl and jest testing.
             </p>
             <Link
               to="https://www.youtube.com/watch?v=D5WmuvlWnvE"
@@ -48,20 +48,19 @@ export default function Projects() {
         <div className="border-4 rounded-lg shadow bg-gray-800 border-white h-full p-[30px]">
           <img
             className="mx-auto rounded-lg lg:w-[60%]"
-            src="https://media.istockphoto.com/id/1420518918/vector/blackjack-icon-flat-style-vector-illustration-isolated-on-white-background.jpg?s=612x612&w=0&k=20&c=a3WpuAt-cEzO1rNAPasLfi6FgwTTepKNm10194yOEUg="
-            alt="Blackjack Cards"
+            src="https://play-lh.googleusercontent.com/AURm4IHjEIkewO_J3t7ZIy5FlFR7B8iTAWKEM_fjFPGW3Sfh8pbLPPsqB1vEC4rqEHU"
+            alt="Connect 4 Chips"
           />
           <div>
             <h5 className="pt-3 mb-2 text-2xl font-bold tracking-tight text-white">
-              BlackJack Pygame
+              Connect 4 Pygame
             </h5>
             <p className="mb-3 font-normal text-gray-400">
-              Quick BlackJack game I made using PyGame Game can be downloaded as
-              a folder / .zip file and ran through main.exe file
+              Connect 4 Pygame with gametree logic, and custom UI. Can be downloaded as a .zip file and ran through main.exe file.
             </p>
-            <Link to="https://github.com/cduarte3/blackjack" target="_blank">
+            <Link to="https://github.com/cduarte3/connect4/tree/main" target="_blank">
               <div className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-600 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300">
-                Play Blackjack
+                Play Connect 4
                 <svg
                   className="rtl:rotate-180 w-3.5 h-3.5 ms-2"
                   aria-hidden="true"
