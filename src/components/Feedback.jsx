@@ -7,7 +7,7 @@ export default function Feedback() {
   const [rating, setRating] = useState(3);
 
   useEffect(() => {
-    fetch("https://mongo-rest.onrender.com/reviews")
+    fetch("https://mongo-rest-production.up.railway.app/reviews")
       .then((response) => response.json())
       .then((data) => setData(data));
   }, []);
