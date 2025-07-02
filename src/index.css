@@ -2,10 +2,5 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  background-color: rgb(25, 30, 68);
-}
-
-#dark-blue-div {
-  z-index: 1000; /* Set a higher z-index */
-}
+@import url("https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Radley:ital@0;1&display=swap");

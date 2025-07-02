@@ -1,8 +1,8 @@
-import React from 'react';
-import Navbar from './components/Navbar';
-import ResHero from './components/ResHero';
-import Footer from './components/Footer';
-import './index.css';
+import React from "react";
+import Navbar from "./components/Navbar";
+import ResHero from "./components/ResHero";
+import Footer from "./components/Footer";
+import "./index.css";
 
 function Resume() {
   return (

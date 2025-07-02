@@ -1,13 +1,13 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [
-    "./src/**/*.{js,jsx,ts,tsx}",
-  ],
+  content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        libre: ["Libre Franklin", "sans-serif"],
+        radley: ["Radley", "serif"],
+      },
+    },
   },
-  plugins: [
-    require('tailwindcss-animated')
-  ],
-}
-
+  plugins: [require("tailwindcss-animated")],
+};
