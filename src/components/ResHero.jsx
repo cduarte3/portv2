@@ -45,7 +45,7 @@ export default function ResHero() {
                 text="RESUME"
                 className="mt-28 font-libre font-black text-white text-[15vw] md:text-[10vw] text-center leading-[0.9] tracking-[-0.06em] px-4 mb-28"
               />
-              <div className="mt-28 pt-20 pb-20 border-4 border-[#EE6164] w-[70%] rounded-[4rem] p-8 flex flex-col items-center">
+              <div className="md:mt-28 pt-20 pb-20 border-4 border-[#EE6164] w-[70%] rounded-[4rem] p-8 flex flex-col items-center">
                 <img
                   src="seneca_logo.png"
                   alt="Venngo Logo"
