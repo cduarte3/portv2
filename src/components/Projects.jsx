@@ -1,3 +1,4 @@
+import React from "react";
 import Navbar from "./Navbar";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -6,8 +7,7 @@ import { useGSAP } from "@gsap/react";
 import { useRef } from "react";
 import Footer from "./Footer";
 import SplitText from "./SplitText";
-import { BsThreeDotsVertical } from "react-icons/bs";
-import { FaLongArrowAltDown } from "react-icons/fa";
+import { HorizontalTicker } from "react-infinite-ticker";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger, ScrollSmoother);
 
@@ -39,66 +39,73 @@ export default function Projects() {
       <div id="smooth-wrapper" ref={main}>
         <div id="smooth-content">
           <Navbar currentPage="projects" />
-          <div className="bg-[#1C1C1C]">
-            <div className="min-h-[90vh] relative flex flex-col items-center">
+          <div className="bg-[#1C1C1C] mb-[-5px]">
+            <div className="mt-[-5px] min-h-[90vh] relative flex flex-col items-center">
               <SplitText
                 text="PROJECTS"
                 className="mt-28 font-libre font-black text-white text-[15vw] md:text-[10vw] text-center leading-[0.9] tracking-[-0.06em] px-4 mb-28"
               />
-              <div className="md:mt-28 pt-20 pb-20 border-4 border-[#EE6164] w-[70%] rounded-[4rem] p-8 flex flex-col items-center">
-                <img
-                  src="seneca_logo.png"
-                  alt="Venngo Logo"
-                  className="w-[50vw] lg:w-[35vw]"
-                ></img>
-                <div className="pt-20 flex flex-col items-center">
-                  <h1 className="leading-[0.9] tracking-[-0.06em] text-white font-libre font-black text-[7vw] lg:text-[5vw] xl:text-[4vw] text-center">
-                    IT Student Service Team Lead
-                  </h1>
-                  <h2 className="font-radley italic text-[#EE6164] text-[5vw] lg:text-[3vw] xl:text-[2.5vw]">
-                    April 2024 - Sept 2024
-                  </h2>
-                  <FaLongArrowAltDown
-                    className="text-[#EE6164] mt-10 mb-10"
-                    size={50}
-                  />
-                  <h1 className="leading-[0.9] tracking-[-0.06em] text-white font-libre font-black text-[7vw] lg:text-[5vw] xl:text-[4vw] text-center">
-                    C Programming TA
-                  </h1>
-                  <h2 className="font-radley italic text-[#EE6164] text-[5vw] lg:text-[3vw] xl:text-[2.5vw]">
-                    Sept 2024 - Dec 2025
+              <HorizontalTicker duration={35000}>
+                <div className="flex flex-col items-center mx-10">
+                  <div
+                    className="border-4 border-[#EE6164] w-[400px] h-[500px] rounded-[4rem] flex-shrink-0 bg-cover bg-center bg-no-repeat"
+                    style={{ backgroundImage: "url(cc.png)" }}
+                  ></div>
+                  <h2 className="font-libre font-black text-white text-3xl mt-4 text-center">
+                    ChapterChat
                   </h2>
                 </div>
-              </div>
-              <BsThreeDotsVertical
-                className="text-[#EE6164] mt-16 mb-16"
-                size={100}
-              />
-              <div className="mb-28 pt-20 pb-20 border-4 border-[#EE6164] w-[70%] rounded-[4rem] p-8 flex flex-col items-center">
-                <img
-                  src="venngo_logo.png"
-                  alt="Venngo Logo"
-                  className="w-[50vw] lg:w-[35vw]"
-                ></img>
-                <div className="pt-20 flex flex-col items-center">
-                  <h1 className="leading-[0.9] tracking-[-0.06em] text-white font-libre font-black text-[7vw] lg:text-[5vw] xl:text-[4vw] text-center">
-                    QA Analyst Intern
-                  </h1>
-                  <h2 className="font-radley italic text-[#EE6164] text-[5vw] lg:text-[3vw] xl:text-[2.5vw]">
-                    Jan 2025 - April 2025
-                  </h2>
-                  <FaLongArrowAltDown
-                    className="text-[#EE6164] mt-10 mb-10"
-                    size={50}
-                  />
-                  <h1 className="leading-[0.9] tracking-[-0.06em] text-white font-libre font-black text-[7vw] lg:text-[5vw] xl:text-[4vw] text-center ">
-                    QA Analyst
-                  </h1>
-                  <h2 className="font-radley italic text-[#EE6164] text-[5vw] lg:text-[3vw] xl:text-[2.5vw]">
-                    May 2025 - Present
+
+                <div className="flex flex-col items-center mx-10">
+                  <div
+                    className="border-4 border-[#EE6164] w-[400px] h-[500px] rounded-[4rem] flex-shrink-0 bg-cover bg-center bg-no-repeat"
+                    style={{ backgroundImage: "url(cc.png)" }}
+                  ></div>
+                  <h2 className="font-libre font-black text-white text-3xl mt-4 text-center">
+                    ChapterChat Mobile
                   </h2>
                 </div>
-              </div>
+
+                <div className="flex flex-col items-center mx-10">
+                  <div
+                    className="border-4 border-[#EE6164] w-[400px] h-[500px] rounded-[4rem] flex-shrink-0 bg-cover bg-center bg-no-repeat"
+                    style={{ backgroundImage: "url(bjack.jpg)" }}
+                  ></div>
+                  <h2 className="font-libre font-black text-white text-3xl mt-4 text-center">
+                    BlackJack Pygame
+                  </h2>
+                </div>
+
+                <div className="flex flex-col items-center mx-10">
+                  <div
+                    className="border-4 border-[#EE6164] w-[400px] h-[500px] rounded-[4rem] flex-shrink-0 bg-cover bg-center bg-no-repeat"
+                    style={{ backgroundImage: "url(con4.png)" }}
+                  ></div>
+                  <h2 className="font-libre font-black text-white text-3xl mt-4 text-center">
+                    Connect 4 Pygame
+                  </h2>
+                </div>
+
+                <div className="flex flex-col items-center mx-10">
+                  <div
+                    className="border-4 border-[#EE6164] w-[400px] h-[500px] rounded-[4rem] flex-shrink-0 bg-cover bg-center bg-no-repeat"
+                    style={{ backgroundImage: "url(aws.jpg)" }}
+                  ></div>
+                  <h2 className="font-libre font-black text-white text-3xl mt-4 text-center">
+                    AWS Microservice
+                  </h2>
+                </div>
+
+                <div className="flex flex-col items-center mx-10">
+                  <div
+                    className="border-4 border-[#EE6164] w-[400px] h-[500px] rounded-[4rem] flex-shrink-0 bg-cover bg-center bg-no-repeat"
+                    style={{ backgroundImage: "url(weather.jpg)" }}
+                  ></div>
+                  <h2 className="font-libre font-black text-white text-3xl mt-4 text-center">
+                    Weather App
+                  </h2>
+                </div>
+              </HorizontalTicker>
             </div>
           </div>
           <Footer />

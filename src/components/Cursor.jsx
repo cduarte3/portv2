@@ -17,17 +17,13 @@ export default function Cursor() {
             cursor: url('/pointer_dark.svg'), auto;
           }
 
-          button:focus, a:focus, input:focus, .focus:focus {
-            cursor: url('/pointer_dark.svg'), auto;
-          }
-
           /* For text elements */
           span, li, blockquote, code {
             cursor: url('/pointer_dark.svg'), text;
           }
 
           /* For text elements */
-          p, h1, h2, h3, h4, h5, h6 {
+          p, h1, h2, h3, h4, h5, h6, b {
             cursor: url('/arrow_dark.svg'), text;
           }
 

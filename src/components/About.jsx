@@ -58,8 +58,8 @@ export default function About() {
       <div id="smooth-wrapper" ref={main}>
         <div id="smooth-content">
           <Navbar currentPage="about" />
-          <div className="bg-[#1C1C1C]">
-            <div className="min-h-[90vh] relative flex flex-col items-center">
+          <div className="bg-[#1C1C1C] mb-[-5px]">
+            <div className="mt-[-5px] min-h-[90vh] relative flex flex-col items-center">
               <SplitText
                 text="ABOUT ME"
                 className="mt-28 font-libre font-black text-white text-[15vw] md:text-[10vw] text-center leading-[0.9] tracking-[-0.06em] px-4 mb-28"

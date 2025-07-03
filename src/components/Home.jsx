@@ -39,8 +39,8 @@ export default function Home() {
     <>
       <div id="smooth-wrapper" ref={main}>
         <div id="smooth-content">
-          <div className="bg-[#1C1C1C]">
-            <div className="min-h-[100vh] relative flex flex-col items-center justify-center">
+          <div className="bg-[#1C1C1C] mb-[-5px]">
+            <div className=" min-h-[100vh] relative flex flex-col items-center justify-center">
               <div className="flex flex-col">
                 <SplitText
                   text="CHRISTIAN"
@@ -99,7 +99,7 @@ export default function Home() {
                 </ul>
               </div>
             </div>
-            <div className="max-w-[90vw] flex flex-col items-center justify-center mx-auto min-h-[100vh]">
+            <div className="min-h-[100vh] max-w-[90vw] flex flex-col items-center justify-center mx-auto">
               <ul>
                 <li className="text-white font-radley text-[6vh] xl:text-[6vw] text-center leading-[0.9] mb-10 hover:text-[#EE6164] hover:italic">
                   <Link to="/about" className="font-radley">
@@ -123,8 +123,8 @@ export default function Home() {
                 </li>
               </ul>
             </div>
-            <Footer />
           </div>
+          <Footer />
         </div>
       </div>
     </>

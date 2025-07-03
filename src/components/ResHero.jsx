@@ -39,13 +39,13 @@ export default function ResHero() {
       <div id="smooth-wrapper" ref={main}>
         <div id="smooth-content">
           <Navbar currentPage="resume" />
-          <div className="bg-[#1C1C1C]">
-            <div className="min-h-[90vh] relative flex flex-col items-center">
+          <div className="bg-[#1C1C1C] mb-[-5px]">
+            <div className="mt-[-5px] min-h-[90vh] relative flex flex-col items-center">
               <SplitText
                 text="RESUME"
                 className="mt-28 font-libre font-black text-white text-[15vw] md:text-[10vw] text-center leading-[0.9] tracking-[-0.06em] px-4 mb-28"
               />
-              <div className="md:mt-28 pt-20 pb-20 border-4 border-[#EE6164] w-[70%] rounded-[4rem] p-8 flex flex-col items-center">
+              <div className="md:mt-28 pt-20 pb-20 border-4 border-[#EE6164] w-[70%] rounded-[4rem] px-8 flex flex-col items-center">
                 <img
                   src="seneca_logo.png"
                   alt="Venngo Logo"
@@ -74,7 +74,7 @@ export default function ResHero() {
                 className="text-[#EE6164] mt-16 mb-16"
                 size={100}
               />
-              <div className="mb-28 pt-20 pb-20 border-4 border-[#EE6164] w-[70%] rounded-[4rem] p-8 flex flex-col items-center">
+              <div className="mb-28 pt-20 pb-20 border-4 border-[#EE6164] w-[70%] rounded-[4rem] px-8 flex flex-col items-center">
                 <img
                   src="venngo_logo.png"
                   alt="Venngo Logo"

@@ -17,6 +17,7 @@
     "react-activity-calendar": "^2.7.13",
     "react-dom": "^18.3.1",
     "react-icons": "^5.2.1",
+    "react-infinite-ticker": "^2.2.0",
     "react-router-dom": "^6.23.1",
     "react-scripts": "^5.0.1",
     "react-typed": "^2.0.12",
