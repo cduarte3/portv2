@@ -49,7 +49,7 @@ export default function Navbar({ currentPage }) {
         <Link to="/">
           <BiHomeAlt2
             size={70}
-            className={`hover:text-[#EE6164] ${
+            className={`hover:text-[#EE6164] hover ${
               currentPage === "home" ? "text-[#EE6164]" : ""
             }`}
           />

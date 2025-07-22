@@ -18,7 +18,7 @@ export default function Cursor() {
           }
 
           /* For text elements */
-          span, li, blockquote, code {
+          span, li, blockquote, code, u {
             cursor: url('/pointer_dark.svg'), text;
           }
 
