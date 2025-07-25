@@ -3,7 +3,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollSmoother } from "gsap/ScrollSmoother";
 import { useGSAP } from "@gsap/react";
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import Footer from "./Footer";
 import SplitText from "./SplitText";
 import { BsThreeDotsVertical } from "react-icons/bs";
@@ -14,6 +14,19 @@ gsap.registerPlugin(useGSAP, ScrollTrigger, ScrollSmoother);
 export default function ResHero() {
   const main = useRef();
   const smoother = useRef();
+  const [isIOS, setIsIOS] = useState(false);
+
+  useEffect(() => {
+    // Detect iOS devices
+    const detectIOS = () => {
+      return (
+        /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+        (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1)
+      );
+    };
+
+    setIsIOS(detectIOS());
+  }, []);
 
   useGSAP(
     () => {
@@ -41,10 +54,16 @@ export default function ResHero() {
           <Navbar currentPage="resume" />
           <div className="bg-[#1C1C1C] mb-[-5px]">
             <div className="mt-[-5px] min-h-[90vh] relative flex flex-col items-center">
-              <SplitText
-                text="RESUME"
-                className="mt-28 font-libre font-black text-white text-[15vw] md:text-[10vw] text-center leading-[0.9] tracking-[-0.06em] px-4 mb-28"
-              />
+              {isIOS ? (
+                <h1 className="mt-28 font-libre font-black text-white text-[15vw] md:text-[10vw] text-center leading-[0.9] tracking-[-0.06em] px-4 mb-28">
+                  RESUME
+                </h1>
+              ) : (
+                <SplitText
+                  text="RESUME"
+                  className="mt-28 font-libre font-black text-white text-[15vw] md:text-[10vw] text-center leading-[0.9] tracking-[-0.06em] px-4 mb-28"
+                />
+              )}
               <div className="md:mt-28 pt-20 pb-20 border-4 border-[#EE6164] w-[70%] rounded-[4rem] px-8 flex flex-col items-center">
                 <img
                   src="seneca_logo.png"

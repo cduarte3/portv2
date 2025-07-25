@@ -15,6 +15,19 @@ export default function Feedback() {
   const [data, setData] = useState([]);
   const [rating, setRating] = useState(3);
   const [loading, setLoading] = useState(true);
+  const [isIOS, setIsIOS] = useState(false);
+
+  useEffect(() => {
+    // Detect iOS devices
+    const detectIOS = () => {
+      return (
+        /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+        (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1)
+      );
+    };
+
+    setIsIOS(detectIOS());
+  }, []);
 
   useEffect(() => {
     setLoading(true);
@@ -101,10 +114,16 @@ export default function Feedback() {
                 onSubmit={handleSubmit}
                 className="p-[40px] mx-auto flex-grow h-full text-center justify-center max-w-full"
               >
-                <SplitText
-                  text="FEEDBACK"
-                  className="mt-28 mx-[-10px] font-libre font-black text-white text-[15vw] lg:text-[10vw] text-center leading-[0.9] tracking-[-0.06em] mb-10"
-                />
+                {isIOS ? (
+                  <h1 className="mt-28 font-libre font-black text-white text-[14vw] md:text-[10vw] text-center leading-[0.9] tracking-[-0.06em] px-4 mb-28">
+                    FEEDBACK
+                  </h1>
+                ) : (
+                  <SplitText
+                    text="FEEDBACK"
+                    className="mt-28 font-libre font-black text-white text-[15vw] md:text-[10vw] text-center leading-[0.9] tracking-[-0.06em] px-4 mb-28"
+                  />
+                )}
                 <label
                   htmlFor="message"
                   className="font-radley italic text-[#EE6164] text-[5vw] lg:text-[3vw] xl:text-[2.5vw] text-center justify-center block"

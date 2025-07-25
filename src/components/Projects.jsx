@@ -3,7 +3,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollSmoother } from "gsap/ScrollSmoother";
 import { useGSAP } from "@gsap/react";
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Footer from "./Footer";
 import SplitText from "./SplitText";
@@ -14,6 +14,19 @@ gsap.registerPlugin(useGSAP, ScrollTrigger, ScrollSmoother);
 export default function Projects() {
   const main = useRef();
   const smoother = useRef();
+  const [isIOS, setIsIOS] = useState(false);
+
+  useEffect(() => {
+    // Detect iOS devices
+    const detectIOS = () => {
+      return (
+        /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+        (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1)
+      );
+    };
+
+    setIsIOS(detectIOS());
+  }, []);
 
   useGSAP(
     () => {
@@ -41,10 +54,16 @@ export default function Projects() {
           <Navbar currentPage="projects" />
           <div className="bg-[#1C1C1C] mb-[-5px] pb-20">
             <div className="mt-[-5px] min-h-[90vh] relative flex flex-col items-center">
-              <SplitText
-                text="PROJECTS"
-                className="mt-28 font-libre font-black text-white text-[15vw] lg:text-[10vw] text-center leading-[0.9] tracking-[-0.06em] px-4 mb-28"
-              />
+              {isIOS ? (
+                <h1 className="mt-28 font-libre font-black text-white text-[15vw] md:text-[10vw] text-center leading-[0.9] tracking-[-0.06em] px-4 mb-28">
+                  PROJECTS
+                </h1>
+              ) : (
+                <SplitText
+                  text="PROJECTS"
+                  className="mt-28 font-libre font-black text-white text-[15vw] md:text-[10vw] text-center leading-[0.9] tracking-[-0.06em] px-4 mb-28"
+                />
+              )}
               <Marquee speed={100} pauseOnHover={true}>
                 <div className="flex flex-col items-center mx-10 h-[520px] lg:h-[620px]">
                   <div

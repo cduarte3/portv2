@@ -3,7 +3,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollSmoother } from "gsap/ScrollSmoother";
 import { useGSAP } from "@gsap/react";
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import Footer from "./Footer";
 import SplitText from "./SplitText";
 import PictureCard from "./PictureCard";
@@ -25,6 +25,19 @@ import Lanyard from "./Lanyard";
 export default function About() {
   const main = useRef();
   const smoother = useRef();
+  const [isIOS, setIsIOS] = useState(false);
+
+  useEffect(() => {
+    // Detect iOS devices
+    const detectIOS = () => {
+      return (
+        /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+        (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1)
+      );
+    };
+
+    setIsIOS(detectIOS());
+  }, []);
 
   const dark_theme = {
     noContributions: "#262626",
@@ -60,10 +73,16 @@ export default function About() {
           <Navbar currentPage="about" />
           <div className="bg-[#1C1C1C] mb-[-5px]">
             <div className="mt-[-5px] min-h-[90vh] relative flex flex-col items-center">
-              <SplitText
-                text="ABOUT ME"
-                className="mt-28 font-libre font-black text-white text-[15vw] md:text-[10vw] text-center leading-[0.9] tracking-[-0.06em] px-4 mb-28"
-              />
+              {isIOS ? (
+                <h1 className="mt-28 font-libre font-black text-white text-[15vw] md:text-[10vw] text-center leading-[0.9] tracking-[-0.06em] px-4 mb-28">
+                  ABOUT ME
+                </h1>
+              ) : (
+                <SplitText
+                  text="ABOUT ME"
+                  className="mt-28 font-libre font-black text-white text-[15vw] md:text-[10vw] text-center leading-[0.9] tracking-[-0.06em] px-4 mb-28"
+                />
+              )}
               <PictureCard
                 className="w-[60vw] sm:w-[40vw] md:w-[35vw] xl:w-[25vw] mb-28"
                 spotlightColor="rgb(238 97 100)"
