@@ -4,7 +4,7 @@ import { RiInstagramFill } from "react-icons/ri";
 import { IoLogoGithub } from "react-icons/io";
 import Footer from "./Footer";
 import SplitText from "./SplitText";
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollSmoother } from "gsap/ScrollSmoother";
@@ -16,6 +16,19 @@ gsap.registerPlugin(useGSAP, ScrollTrigger, ScrollSmoother);
 export default function Home() {
   const main = useRef();
   const smoother = useRef();
+  const [isIOS, setIsIOS] = useState(false);
+
+  useEffect(() => {
+    // Detect iOS devices
+    const detectIOS = () => {
+      return (
+        /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+        (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1)
+      );
+    };
+
+    setIsIOS(detectIOS());
+  }, []);
 
   useGSAP(
     () => {
@@ -42,14 +55,27 @@ export default function Home() {
           <div className="bg-[#1C1C1C] mb-[-5px]">
             <div className=" min-h-[100vh] relative flex flex-col items-center justify-center">
               <div className="flex flex-col">
-                <SplitText
-                  text="CHRISTIAN"
-                  className="font-libre font-black text-white text-[15vw] text-center leading-[0.9] tracking-[-0.06em]"
-                />
-                <SplitText
-                  text="DUARTE"
-                  className="font-libre font-black text-white text-[15vw] text-center leading-[0.9] tracking-[-0.06em]"
-                />
+                {isIOS ? (
+                  <>
+                    <h1 className="font-libre font-black text-white text-[15vw] text-center leading-[0.9] tracking-[-0.06em]">
+                      CHRISTIAN
+                    </h1>
+                    <h1 className="font-libre font-black text-white text-[15vw] text-center leading-[0.9] tracking-[-0.06em]">
+                      DUARTE
+                    </h1>
+                  </>
+                ) : (
+                  <>
+                    <SplitText
+                      text="CHRISTIAN"
+                      className="font-libre font-black text-white text-[15vw] text-center leading-[0.9] tracking-[-0.06em]"
+                    />
+                    <SplitText
+                      text="DUARTE"
+                      className="font-libre font-black text-white text-[15vw] text-center leading-[0.9] tracking-[-0.06em]"
+                    />
+                  </>
+                )}
               </div>
               <h2 className="text-[#EE6164] font-radley italic text-[6vw] lg:text-[5vw]">
                 Software Developer
