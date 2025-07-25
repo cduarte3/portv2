@@ -14,14 +14,25 @@ gsap.registerPlugin(useGSAP, ScrollTrigger, ScrollSmoother);
 export default function Feedback() {
   const [data, setData] = useState([]);
   const [rating, setRating] = useState(3);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("https://localhost:5000/reviews")
-      .then((response) => response.json())
-      .then((data) => setData(data))
+    setLoading(true);
+    fetch(process.env.FEEDBACK_API_URL || "http://localhost:5000/reviews")
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then((data) => {
+        setData(data.reviews || []);
+        setLoading(false);
+      })
       .catch((error) => {
         console.error("Error fetching reviews:", error);
         setData([]);
+        setLoading(false);
       });
   }, []);
 
@@ -31,15 +42,15 @@ export default function Feedback() {
     event.preventDefault();
 
     const name = event.target.elements["u-name"].value;
-    const review = event.target.elements["message"].value;
+    const feedback = event.target.elements["message"].value;
 
-    if (name.length > 0 && review.length > 0) {
-      fetch("https://localhost:5000/reviews", {
+    if (name.length > 0 && feedback.length > 0) {
+      fetch(process.env.FEEDBACK_API_URL || "http://localhost:5000/reviews", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ name, review, rating }),
+        body: JSON.stringify({ name, feedback, rating }),
       })
         .then((response) => response.json())
         .then((data) => {
@@ -66,6 +77,7 @@ export default function Feedback() {
       });
       smoother.current.scrollTo(0, false);
 
+      /*
       ScrollTrigger.create({
         trigger: ".box-c",
         pin: true,
@@ -73,6 +85,7 @@ export default function Feedback() {
         end: "+=300",
         markers: false,
       });
+      */
     },
     { scope: main }
   );
@@ -90,7 +103,7 @@ export default function Feedback() {
               >
                 <SplitText
                   text="FEEDBACK"
-                  className="mt-28 font-libre font-black text-white text-[15vw] lg:text-[10vw] text-center leading-[0.9] tracking-[-0.06em] px-4 mb-10"
+                  className="mt-28 mx-[-10px] font-libre font-black text-white text-[15vw] lg:text-[10vw] text-center leading-[0.9] tracking-[-0.06em] mb-10"
                 />
                 <label
                   htmlFor="message"
@@ -98,15 +111,15 @@ export default function Feedback() {
                 >
                   Leave some feedback, improvements, or suggestions below!
                 </label>
-                <div className="flex items-center gap-4 justify-center mt-28 mb-10">
+                <div className="flex flex-col sm:flex-row items-center gap-4 justify-center mt-28 mb-10">
                   <label
                     htmlFor="u-name"
-                    className="text-white font-libre font-black text-xl sm:text-2xl md:text-3xl"
+                    className="text-white font-libre font-black text-2xl sm:text-3xl md:text-4xl"
                   >
                     Name:
                   </label>
                   <input
-                    className="p-4 text-lg sm:text-xl md:text-2xl rounded-3xl border bg-[#1C1C1C] border-[#EE6164] font-radley text-white"
+                    className="p-4 text-lg sm:text-xl md:text-2xl rounded-3xl border-4 bg-[#1C1C1C] border-[#EE6164] font-radley text-white w-full sm:w-auto"
                     type="text"
                     id="u-name"
                     name="u-name"
@@ -115,7 +128,7 @@ export default function Feedback() {
                 <textarea
                   id="message"
                   rows="4"
-                  className="justify-center mx-auto mb-10 p-5 block w-[90%] h-[30vh] text-2xl rounded-3xl border bg-[#1C1C1C] border-[#EE6164] font-radley text-white placeholder-[#a7a7a7]"
+                  className="justify-center mx-auto mb-10 p-5 block w-[90%] h-[30vh] text-2xl rounded-3xl border-4 bg-[#1C1C1C] border-[#EE6164] font-radley text-white placeholder-[#a7a7a7]"
                   placeholder="Leave a comment..."
                   maxLength="1000"
                   style={{
@@ -124,34 +137,50 @@ export default function Feedback() {
                     scrollbarColor: "#EE6164 #1C1C1C",
                   }}
                 ></textarea>
-                <BasicRating value={rating} setRating={setRating} />
+                <div className="flex flex-col items-center justify-center">
+                  <BasicRating value={rating} setRating={setRating} />
+                </div>
+
                 <button className="mt-10 font-radley text-white bg-[#EE6164] rounded-3xl hover:bg-[#5f2627] focus:outline-none sm:text-2xl text-xl p-4 w-[50%] sm:w-[40%] md:w-[30%] lg:w-[25%] xl:w-[20%]">
                   Submit
                 </button>
               </form>
-              <div className="col-span-full flex items-center justify-center">
+              <div className="col-span-full flex items-center justify-center mt-10">
                 <p className="p-5 mt-[-30px] text-center block mb-2 text-xl sm:text-2xl font-medium text-white">
                   {reviewMessage}
                 </p>
               </div>
               <div className="flex-grow grid w-[90%] grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[50px] mx-auto text-white justify-center pb-10">
-                {data.length > 0 ? (
+                {loading ? (
+                  <div className="col-span-full flex items-center justify-center">
+                    <p className="p-5 mt-[-30px] text-center block mb-2 text-xl sm:text-2xl font-medium text-white">
+                      Loading reviews...
+                    </p>
+                  </div>
+                ) : data && data.length > 0 ? (
                   data.map((item) => (
                     <div
                       key={item.id}
-                      className="w-[90%] sm:w-[70%]  md:w-full p-4 border-4 rounded-lg shadow bg-gray-800 border-white mx-auto"
+                      className="flex flex-col justify-center items-center text-center w-[90%] sm:w-[70%] md:w-full p-10 border-4 rounded-3xl shadow border-[#EE6164] mx-auto"
                     >
                       <p
-                        className="font-bold pb-4"
+                        className="font-bold text-3xl pb-4"
                         style={{ wordWrap: "break-word" }}
                       >
-                        {item.review}
+                        {item.feedback}
                       </p>
-                      <p className="pb-4">- {item.name}</p>
-                      <p className="pb-4">
-                        {new Date(item.date).toISOString().split("T")[0]}
+                      <p className="text-2xl font-radley italic text-[#EE6164] pb-4">
+                        - {item.name}
                       </p>
-                      <Rating value={item.rating} readOnly />
+                      <Rating
+                        value={item.rating}
+                        readOnly
+                        sx={{
+                          fontSize: {
+                            xs: "3rem",
+                          },
+                        }}
+                      />
                     </div>
                   ))
                 ) : (
@@ -164,6 +193,7 @@ export default function Feedback() {
               </div>
             </div>
           </div>
+          <Footer />
         </div>
       </div>
     </>

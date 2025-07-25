@@ -12,7 +12,7 @@ export default function BasicRating({ value, setRating }) {
           }}
           sx={{
             fontSize: {
-              xs: "4rem", // On extra-small devices
+              xs: "3.5rem", // On extra-small devices
               sm: "4.5rem", // On small devices
               md: "5rem", // On medium devices
               lg: "5.5rem", // On large devices
