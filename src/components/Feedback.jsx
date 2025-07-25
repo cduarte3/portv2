@@ -18,7 +18,7 @@ export default function Feedback() {
 
   useEffect(() => {
     setLoading(true);
-    fetch(process.env.FEEDBACK_API_URL)
+    fetch(process.env.REACT_APP_FEEDBACK_API_URL)
       .then((response) => {
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
@@ -45,7 +45,7 @@ export default function Feedback() {
     const feedback = event.target.elements["message"].value;
 
     if (name.length > 0 && feedback.length > 0) {
-      fetch(process.env.FEEDBACK_API_URL, {
+      fetch(process.env.REACT_APP_FEEDBACK_API_URL, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
