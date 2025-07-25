@@ -1,16 +1,13 @@
-import React from 'react';
-import Navbar from './components/Navbar';
-import Projects from './components/Projects';
-import Footer from './components/Footer';
-import './index.css';
+import Projects from "./components/Projects";
+import Cursor from "./components/Cursor";
+import "./index.css";
 
 function Project() {
   return (
-    <div className="Resume">
-      <Navbar />
+    <>
+      <Cursor />
       <Projects />
-      <Footer />
-    </div>
+    </>
   );
 }
 

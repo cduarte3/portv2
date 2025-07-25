@@ -1,20 +1,12 @@
-import React from 'react';
-import './index.css';
-import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import About from './components/About';
-import Frame from './components/Frame';
-import Footer from './components/Footer';
-
+import "./index.css";
+import Home from "./components/Home";
+import Cursor from "./components/Cursor";
 
 function App() {
   return (
     <div className="App">
-      <Navbar />
-      <Hero />
-      <About />
-      <Frame />
-      <Footer />
+      <Cursor />
+      <Home />
     </div>
   );
 }
