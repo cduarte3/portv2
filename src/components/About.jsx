@@ -87,7 +87,7 @@ export default function About() {
                 className="w-[60vw] sm:w-[40vw] md:w-[35vw] xl:w-[25vw] mb-28"
                 spotlightColor="rgb(238 97 100)"
               >
-                <img src="profile-sm.png" alt="Christian Duarte"></img>
+                <img src="profile-2.jpg" alt="Christian Duarte"></img>
               </PictureCard>
               <h2 className="text-white font-radley text-[5vw] sm:text-[3vw] lg:text-[2vw] xl:text-[1.5vw] text-center px-4 max-w-[75vw] xl:max-w-[60vw] mb-56">
                 Hello! My name is Christian Duarte, and I am an aspiring
