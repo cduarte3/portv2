@@ -91,13 +91,13 @@ export default function About() {
               </PictureCard>
               <h2 className="text-white font-radley text-[5vw] sm:text-[3vw] lg:text-[2vw] xl:text-[1.5vw] text-center px-4 max-w-[75vw] xl:max-w-[60vw] mb-56">
                 Hello! My name is Christian Duarte, and I am an aspiring
-                Software Developer. I am currently on track to graduate from the
-                BSD - Software Development program at Seneca Polytechnic by
-                August 2025. <br /> <br /> I enjoy working with a variety of
-                programming languages and frameworks, and am always looking to
-                learn more. Below, you will find my GitHub contributions, as
-                well as a list of some frameworks and languages I have used in
-                coursework and personal projects.
+                Software Developer. In August 2025 I graduated from the BSD -
+                Software Development program at Seneca Polytechnic. <br />{" "}
+                <br /> I enjoy working with a variety of programming languages
+                and frameworks, and am always looking to learn more. Below, you
+                will find my GitHub contributions, as well as a list of some
+                frameworks and languages I have used in coursework and personal
+                projects.
               </h2>
 
               <div className="max-w-[90vw] flex flex-col items-center justify-center mx-auto min-h-[100vh]">
