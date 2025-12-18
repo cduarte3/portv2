@@ -10,6 +10,7 @@
     "@mui/material": "^7.1.1",
     "date-fns": "^3.6.0",
     "dotenv": "^16.4.5",
+    "embla-carousel-react": "^8.6.0",
     "github-contribution-calendar": "^1.3.4",
     "gsap": "^3.13.0",
     "meshline": "^3.3.1",
