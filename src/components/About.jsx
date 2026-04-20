@@ -7,7 +7,7 @@ import { useRef, useState, useEffect } from "react";
 import Footer from "./Footer";
 import SplitText from "./SplitText";
 import PictureCard from "./PictureCard";
-import { GitHubCalendar } from "github-contribution-calendar";
+import ActivityCalendar from "react-activity-calendar";
 import Softwares from "./Softwares";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger, ScrollSmoother);
@@ -26,6 +26,7 @@ export default function About() {
   const main = useRef();
   const smoother = useRef();
   const [isIOS, setIsIOS] = useState(false);
+  const [contributions, setContributions] = useState([]);
 
   useEffect(() => {
     // Detect iOS devices
@@ -37,6 +38,13 @@ export default function About() {
     };
 
     setIsIOS(detectIOS());
+  }, []);
+
+  useEffect(() => {
+    fetch(`${process.env.REACT_APP_GITHUB_CONTRIBUTIONS_URL}?year=2024`)
+      .then((res) => res.json())
+      .then((data) => setContributions(data.contributions || []))
+      .catch((err) => console.error("Failed to load contributions:", err));
   }, []);
 
   const dark_theme = {
@@ -63,7 +71,7 @@ export default function About() {
         markers: false,
       });
     },
-    { scope: main }
+    { scope: main },
   );
 
   return (
@@ -104,17 +112,23 @@ export default function About() {
                 <h2 className="font-libre font-black text-white text-[10vw] lg:text-[8vw] xl:text-[5vw] text-center leading-[0.9] tracking-[-0.06em] px-4 mb-10 lg:mb-28">
                   Github Contributions
                 </h2>
-                <GitHubCalendar
-                  username="cduarte3"
-                  token={process.env.REACT_APP_GITHUB_TOKEN}
-                  year={2024}
-                  showLabels={true}
-                  theme="custom"
-                  customTheme={dark_theme}
-                  titleColor="#EE6164"
-                  labelColor="white"
-                  background="#1C1C1C"
-                />
+                {contributions.length > 0 && (
+                  <ActivityCalendar
+                    data={contributions}
+                    colorScheme="dark"
+                    theme={{
+                      dark: [
+                        dark_theme.noContributions,
+                        dark_theme.low,
+                        dark_theme.moderate,
+                        dark_theme.high,
+                        dark_theme.veryHigh,
+                      ],
+                    }}
+                    showWeekdayLabels={true}
+                    style={{ color: "white" }}
+                  />
+                )}
               </div>
             </div>
             <div className=" flex flex-col items-center justify-center mx-auto min-h-[100vh]">

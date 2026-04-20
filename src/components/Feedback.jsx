@@ -16,6 +16,10 @@ export default function Feedback() {
   const [rating, setRating] = useState(3);
   const [loading, setLoading] = useState(true);
   const [isIOS, setIsIOS] = useState(false);
+  const [userReview, setUserReview] = useState(null); // { reviewId, ownerToken }
+  const [isEditing, setIsEditing] = useState(false);
+  const [editFeedback, setEditFeedback] = useState("");
+  const [editRating, setEditRating] = useState(3);
 
   useEffect(() => {
     // Detect iOS devices
@@ -25,8 +29,17 @@ export default function Feedback() {
         (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1)
       );
     };
-
     setIsIOS(detectIOS());
+
+    // Load stored review token from localStorage
+    const stored = localStorage.getItem("my_review");
+    if (stored) {
+      try {
+        setUserReview(JSON.parse(stored));
+      } catch {
+        localStorage.removeItem("my_review");
+      }
+    }
   }, []);
 
   useEffect(() => {
@@ -49,6 +62,21 @@ export default function Feedback() {
       });
   }, []);
 
+  // Pre-fill edit fields when data loads and user has a stored review
+  useEffect(() => {
+    if (userReview && data.length > 0) {
+      const mine = data.find((r) => r.id === userReview.reviewId);
+      if (mine) {
+        setEditFeedback(mine.feedback);
+        setEditRating(mine.rating);
+      } else {
+        // Review no longer exists externally — clear stale localStorage
+        localStorage.removeItem("my_review");
+        setUserReview(null);
+      }
+    }
+  }, [data, userReview]);
+
   const [reviewMessage, setReviewMessage] = useState("");
 
   const handleSubmit = (event) => {
@@ -66,8 +94,14 @@ export default function Feedback() {
         body: JSON.stringify({ name, feedback, rating }),
       })
         .then((response) => response.json())
-        .then((data) => {
-          console.log(data);
+        .then((responseData) => {
+          localStorage.setItem(
+            "my_review",
+            JSON.stringify({
+              reviewId: responseData.review.id,
+              ownerToken: responseData.ownerToken,
+            }),
+          );
           window.location.reload();
         })
         .catch((error) => {
@@ -77,6 +111,51 @@ export default function Feedback() {
     } else {
       setReviewMessage("Please fill out all fields");
     }
+  };
+
+  const handleEdit = (event) => {
+    event.preventDefault();
+
+    if (editFeedback.length === 0) {
+      setReviewMessage("Feedback cannot be empty");
+      return;
+    }
+
+    fetch(`${process.env.REACT_APP_FEEDBACK_API_URL}/${userReview.reviewId}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        feedback: editFeedback,
+        rating: editRating,
+        ownerToken: userReview.ownerToken,
+      }),
+    })
+      .then((response) => response.json())
+      .then(() => {
+        setIsEditing(false);
+        window.location.reload();
+      })
+      .catch((error) => {
+        setReviewMessage("Failed to update review. Please try again.");
+        console.error("Error:", error);
+      });
+  };
+
+  const handleDelete = () => {
+    fetch(`${process.env.REACT_APP_FEEDBACK_API_URL}/${userReview.reviewId}`, {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ ownerToken: userReview.ownerToken }),
+    })
+      .then((response) => response.json())
+      .then(() => {
+        localStorage.removeItem("my_review");
+        window.location.reload();
+      })
+      .catch((error) => {
+        setReviewMessage("Failed to delete review. Please try again.");
+        console.error("Error:", error);
+      });
   };
 
   const main = useRef();
@@ -100,7 +179,7 @@ export default function Feedback() {
       });
       */
     },
-    { scope: main }
+    { scope: main },
   );
 
   return (
@@ -110,10 +189,7 @@ export default function Feedback() {
           <Navbar currentPage="feedback" />
           <div className="bg-[#1C1C1C] mb-[-5px]">
             <div className="mt-[-5px] min-h-[90vh] relative flex flex-col items-center">
-              <form
-                onSubmit={handleSubmit}
-                className="p-[40px] mx-auto flex-grow h-full text-center justify-center max-w-full"
-              >
+              <div className="p-[40px] mx-auto flex-grow h-full text-center justify-center max-w-full w-full">
                 {isIOS ? (
                   <h1 className="mt-28 font-libre font-black text-white text-[14vw] md:text-[10vw] text-center leading-[0.9] tracking-[-0.06em] px-4 mb-28">
                     FEEDBACK
@@ -124,46 +200,121 @@ export default function Feedback() {
                     className="mt-28 font-libre font-black text-white text-[15vw] md:text-[10vw] text-center leading-[0.9] tracking-[-0.06em] px-4 mb-28"
                   />
                 )}
-                <label
-                  htmlFor="message"
-                  className="font-radley italic text-[#EE6164] text-[5vw] lg:text-[3vw] xl:text-[2.5vw] text-center justify-center block"
-                >
-                  Leave some feedback, improvements, or suggestions below!
-                </label>
-                <div className="flex flex-col sm:flex-row items-center gap-4 justify-center mt-28 mb-10">
-                  <label
-                    htmlFor="u-name"
-                    className="text-white font-libre font-black text-2xl sm:text-3xl md:text-4xl"
-                  >
-                    Name:
-                  </label>
-                  <input
-                    className="p-4 text-lg sm:text-xl md:text-2xl rounded-3xl border-4 bg-[#1C1C1C] border-[#EE6164] font-radley text-white w-full sm:w-auto"
-                    type="text"
-                    id="u-name"
-                    name="u-name"
-                  />
-                </div>
-                <textarea
-                  id="message"
-                  rows="4"
-                  className="justify-center mx-auto mb-10 p-5 block w-[90%] h-[30vh] text-2xl rounded-3xl border-4 bg-[#1C1C1C] border-[#EE6164] font-radley text-white placeholder-[#a7a7a7]"
-                  placeholder="Leave a comment..."
-                  maxLength="1000"
-                  style={{
-                    resize: "none",
-                    scrollbarWidth: "thin",
-                    scrollbarColor: "#EE6164 #1C1C1C",
-                  }}
-                ></textarea>
-                <div className="flex flex-col items-center justify-center">
-                  <BasicRating value={rating} setRating={setRating} />
-                </div>
 
-                <button className="mt-10 font-radley text-white bg-[#EE6164] rounded-3xl hover:bg-[#5f2627] focus:outline-none sm:text-2xl text-xl p-4 w-[50%] sm:w-[40%] md:w-[30%] lg:w-[25%] xl:w-[20%]">
-                  Submit
-                </button>
-              </form>
+                {userReview ? (
+                  /* ── Returning user: show edit or delete options ── */
+                  isEditing ? (
+                    <form onSubmit={handleEdit} className="text-center">
+                      <label
+                        htmlFor="edit-message"
+                        className="font-radley italic text-[#EE6164] text-[5vw] lg:text-[3vw] xl:text-[2.5vw] text-center justify-center block mb-10"
+                      >
+                        Edit your review below.
+                      </label>
+                      <textarea
+                        id="edit-message"
+                        rows="4"
+                        value={editFeedback}
+                        onChange={(e) => setEditFeedback(e.target.value)}
+                        className="justify-center mx-auto mb-10 p-5 block w-[90%] h-[30vh] text-2xl rounded-3xl border-4 bg-[#1C1C1C] border-[#EE6164] font-radley text-white placeholder-[#a7a7a7]"
+                        placeholder="Leave a comment..."
+                        maxLength="1000"
+                        style={{
+                          resize: "none",
+                          scrollbarWidth: "thin",
+                          scrollbarColor: "#EE6164 #1C1C1C",
+                        }}
+                      />
+                      <div className="flex flex-col items-center justify-center">
+                        <BasicRating
+                          value={editRating}
+                          setRating={setEditRating}
+                        />
+                      </div>
+                      <div className="flex gap-4 justify-center mt-10">
+                        <button
+                          type="submit"
+                          className="font-radley text-white bg-[#EE6164] rounded-3xl hover:bg-[#5f2627] focus:outline-none sm:text-2xl text-xl p-4 w-[40%] sm:w-[30%] md:w-[20%]"
+                        >
+                          Save
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => setIsEditing(false)}
+                          className="font-radley text-white bg-[#3a3a3a] rounded-3xl hover:bg-[#555] focus:outline-none sm:text-2xl text-xl p-4 w-[40%] sm:w-[30%] md:w-[20%]"
+                        >
+                          Cancel
+                        </button>
+                      </div>
+                    </form>
+                  ) : (
+                    <div className="text-center">
+                      <p className="font-radley italic text-[#EE6164] text-[5vw] lg:text-[3vw] xl:text-[2.5vw] text-center justify-center block mb-10">
+                        You've already left a review. You can edit or remove it
+                        below.
+                      </p>
+                      <div className="flex gap-4 justify-center mt-10">
+                        <button
+                          type="button"
+                          onClick={() => setIsEditing(true)}
+                          className="font-radley text-white bg-[#EE6164] rounded-3xl hover:bg-[#5f2627] focus:outline-none sm:text-2xl text-xl p-4 w-[40%] sm:w-[30%] md:w-[20%]"
+                        >
+                          Edit
+                        </button>
+                        <button
+                          type="button"
+                          onClick={handleDelete}
+                          className="font-radley text-white bg-[#3a3a3a] rounded-3xl hover:bg-[#5f2627] focus:outline-none sm:text-2xl text-xl p-4 w-[40%] sm:w-[30%] md:w-[20%]"
+                        >
+                          Delete
+                        </button>
+                      </div>
+                    </div>
+                  )
+                ) : (
+                  /* ── New user: show submission form ── */
+                  <form onSubmit={handleSubmit} className="text-center">
+                    <label
+                      htmlFor="message"
+                      className="font-radley italic text-[#EE6164] text-[5vw] lg:text-[3vw] xl:text-[2.5vw] text-center justify-center block"
+                    >
+                      Leave some feedback, improvements, or suggestions below!
+                    </label>
+                    <div className="flex flex-col sm:flex-row items-center gap-4 justify-center mt-28 mb-10">
+                      <label
+                        htmlFor="u-name"
+                        className="text-white font-libre font-black text-2xl sm:text-3xl md:text-4xl"
+                      >
+                        Name:
+                      </label>
+                      <input
+                        className="p-4 text-lg sm:text-xl md:text-2xl rounded-3xl border-4 bg-[#1C1C1C] border-[#EE6164] font-radley text-white w-full sm:w-auto"
+                        type="text"
+                        id="u-name"
+                        name="u-name"
+                      />
+                    </div>
+                    <textarea
+                      id="message"
+                      rows="4"
+                      className="justify-center mx-auto mb-10 p-5 block w-[90%] h-[30vh] text-2xl rounded-3xl border-4 bg-[#1C1C1C] border-[#EE6164] font-radley text-white placeholder-[#a7a7a7]"
+                      placeholder="Leave a comment..."
+                      maxLength="1000"
+                      style={{
+                        resize: "none",
+                        scrollbarWidth: "thin",
+                        scrollbarColor: "#EE6164 #1C1C1C",
+                      }}
+                    ></textarea>
+                    <div className="flex flex-col items-center justify-center">
+                      <BasicRating value={rating} setRating={setRating} />
+                    </div>
+                    <button className="mt-10 font-radley text-white bg-[#EE6164] rounded-3xl hover:bg-[#5f2627] focus:outline-none sm:text-2xl text-xl p-4 w-[50%] sm:w-[40%] md:w-[30%] lg:w-[25%] xl:w-[20%]">
+                      Submit
+                    </button>
+                  </form>
+                )}
+              </div>
               <div className="col-span-full flex items-center justify-center mt-10">
                 <p className="p-5 mt-[-30px] text-center block mb-2 text-xl sm:text-2xl font-medium text-white">
                   {reviewMessage}

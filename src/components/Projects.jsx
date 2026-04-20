@@ -47,7 +47,7 @@ export default function Projects() {
         markers: false,
       });
     },
-    { scope: main }
+    { scope: main },
   );
 
   const scrollPrev = useCallback(() => {
@@ -116,6 +116,19 @@ export default function Projects() {
                     <div className="flex flex-col items-center h-[520px] lg:h-[620px] flex-[0_0_auto]">
                       <div
                         className="border-4 border-[#EE6164] w-[300px] lg:w-[400px] h-[300px] lg:h-[500px] rounded-[4rem] bg-cover bg-center bg-no-repeat hover:cursor-pointer"
+                        style={{ backgroundImage: "url(pr.png)" }}
+                        onClick={() =>
+                          window.open("https://www.pullrates.com", "_blank")
+                        }
+                      ></div>
+                      <h2 className="font-libre font-black text-white text-3xl mt-6 text-center">
+                        Pull Rates
+                      </h2>
+                    </div>
+
+                    <div className="flex flex-col items-center h-[520px] lg:h-[620px] flex-[0_0_auto]">
+                      <div
+                        className="border-4 border-[#EE6164] w-[300px] lg:w-[400px] h-[300px] lg:h-[500px] rounded-[4rem] bg-cover bg-center bg-no-repeat hover:cursor-pointer"
                         style={{ backgroundImage: "url(cc.png)" }}
                         onClick={() =>
                           window.open("https://www.chaptr.net", "_blank")
@@ -136,22 +149,11 @@ export default function Projects() {
                     <div className="flex flex-col items-center h-[520px] lg:h-[620px] flex-[0_0_auto]">
                       <div
                         className="border-4 border-[#EE6164] w-[300px] lg:w-[400px] h-[300px] lg:h-[500px] rounded-[4rem] bg-cover bg-center bg-no-repeat hover:cursor-pointer"
-                        style={{ backgroundImage: "url(cc_mobile.png)" }}
-                        onClick={() => (window.location.href = "/nonexistent")}
-                      ></div>
-                      <h2 className="font-libre font-black text-white text-3xl mt-4 text-center">
-                        Chaptr Mobile
-                      </h2>
-                    </div>
-
-                    <div className="flex flex-col items-center h-[520px] lg:h-[620px] flex-[0_0_auto]">
-                      <div
-                        className="border-4 border-[#EE6164] w-[300px] lg:w-[400px] h-[300px] lg:h-[500px] rounded-[4rem] bg-cover bg-center bg-no-repeat hover:cursor-pointer"
                         style={{ backgroundImage: "url(f2.png)" }}
                         onClick={() =>
                           window.open(
                             "https://www.npmjs.com/package/f2read?activeTab=readme",
-                            "_blank"
+                            "_blank",
                           )
                         }
                       ></div>
@@ -174,7 +176,7 @@ export default function Projects() {
                         onClick={() =>
                           window.open(
                             "https://christianduarte7.itch.io/blackjack-demo",
-                            "_blank"
+                            "_blank",
                           )
                         }
                       ></div>
@@ -197,7 +199,7 @@ export default function Projects() {
                         onClick={() =>
                           window.open(
                             "https://christianduarte7.itch.io/connect-four",
-                            "_blank"
+                            "_blank",
                           )
                         }
                       ></div>
@@ -220,7 +222,7 @@ export default function Projects() {
                         onClick={() =>
                           window.open(
                             "https://www.youtube.com/watch?v=D5WmuvlWnvE",
-                            "_blank"
+                            "_blank",
                           )
                         }
                       ></div>
@@ -236,7 +238,7 @@ export default function Projects() {
                         onClick={() =>
                           window.open(
                             "https://weather-app-gamma-cyan-66.vercel.app",
-                            "_blank"
+                            "_blank",
                           )
                         }
                       ></div>
