@@ -11,7 +11,6 @@ import { ScrollSmoother } from "gsap/ScrollSmoother";
 import { useGSAP } from "@gsap/react";
 import { Link } from "react-router-dom";
 
-
 gsap.registerPlugin(useGSAP, ScrollTrigger, ScrollSmoother);
 
 export default function Home() {
@@ -47,7 +46,7 @@ export default function Home() {
         markers: false,
       });
     },
-    { scope: main }
+    { scope: main },
   );
   return (
     <>
@@ -141,11 +140,6 @@ export default function Home() {
                 <li className="text-white font-radley text-[6vh] xl:text-[6vw] text-center leading-[0.9] mb-10 hover:text-[#EE6164] hover:italic">
                   <Link to="/projects" className="font-radley">
                     Projects
-                  </Link>
-                </li>
-                <li className="text-white font-radley text-[6vh] xl:text-[6vw] text-center leading-[0.9] mb-10 hover:text-[#EE6164] hover:italic">
-                  <Link to="/feedback" className="font-radley">
-                    Feedback
                   </Link>
                 </li>
               </ul>

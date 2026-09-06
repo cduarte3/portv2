@@ -39,14 +39,8 @@ export default function Navbar({ currentPage }) {
 
   return (
     <>
-      <div className="hidden lg:flex flex-wrap items-center w-full text-center text-white font-radley text-4xl justify-between gap-4 px-20 py-8 bg-[#1C1C1C]">
-        <Link to="/about" className={getLinkStyle("about")}>
-          <span className="font-radley inline-block">About</span>
-        </Link>
-        <Link to="/resume" className={getLinkStyle("resume")}>
-          <span className="font-radley inline-block">Resume</span>
-        </Link>
-        <Link to="/">
+      <div className="hidden lg:flex flex-wrap items-center w-full text-center text-white font-radley text-4xl justify-between px-20 py-8 bg-[#1C1C1C]">
+        <Link to="/" className="flex-shrink-0">
           <BiHomeAlt2
             size={70}
             className={`hover:text-[#EE6164] hover ${
@@ -54,12 +48,18 @@ export default function Navbar({ currentPage }) {
             }`}
           />
         </Link>
-        <Link to="/projects" className={getLinkStyle("projects")}>
-          <span className="font-radley inline-block">Projects</span>
-        </Link>
-        <Link to="/feedback" className={getLinkStyle("feedback")}>
-          <span className="font-radley inline-block">Feedback</span>
-        </Link>
+        <div className="flex gap-12 justify-center flex-1">
+          <Link to="/about" className={getLinkStyle("about")}>
+            <span className="font-radley inline-block">About</span>
+          </Link>
+          <Link to="/resume" className={getLinkStyle("resume")}>
+            <span className="font-radley inline-block">Resume</span>
+          </Link>
+          <Link to="/projects" className={getLinkStyle("projects")}>
+            <span className="font-radley inline-block">Projects</span>
+          </Link>
+        </div>
+        <div className="flex-shrink-0 w-[70px]"></div>
       </div>
 
       <div className="lg:hidden font-radley text-4xl flex justify-between items-center p-8 bg-[#1C1C1C]">
@@ -106,11 +106,6 @@ export default function Navbar({ currentPage }) {
             <li className="p-4 font-radley">
               <Link to="/projects" className={getSmallStyle("projects")}>
                 Projects
-              </Link>
-            </li>
-            <li className="p-4 font-radley">
-              <Link to="/feedback" className={getSmallStyle("feedback")}>
-                Feedback
               </Link>
             </li>
           </ul>
